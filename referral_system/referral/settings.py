@@ -74,11 +74,12 @@ WSGI_APPLICATION = 'referral.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'djDataBase',
+        'URL': 'postgresql://postgres:UqPo0KxbzHeESbQcvr8b@containers-us-west-47.railway.app:6783/railway',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': '123456er',
-        'HOST': 'localhost',
-        'PORT': '',  # The default port for PostgreSQL is 5432
+        'PASSWORD': 'UqPo0KxbzHeESbQcvr8b',
+        'HOST': 'containers-us-west-47.railway.app',
+        'PORT': 6783,
     }
 }
 
