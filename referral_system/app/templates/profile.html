@@ -1,0 +1,32 @@
+<h2>Your Profile</h2>
+<p>Phone Number: {{ user.phone_number }}</p>
+<p>Your Invite Code: {{ user.invite_code }}</p>
+
+{% if not user.invited_by %}
+<h3>Enter an Invite Code:</h3>
+<form method="POST" action="{% url 'profile' %}">
+    {% csrf_token %}
+    {% if user.used_invite_code %}
+    <input type="text" name="invite_code" value="{{ user.used_invite_code }}" disabled>
+    {% else %}
+    <input type="text" name="invite_code" value="{{ user.used_invite_code }}">
+    {% endif %}
+    <input type="submit" value="Сохранить">
+</form>
+
+{% else %}
+<p>You have already entered an invite code: {{ user.used_invite_code }}</p>
+{% endif %}
+
+<h3>Users Who Used Your Invite Code:</h3>
+{% if invited_users %}
+<ul>
+    {% for invited_user_phone_number in invited_users %}
+    <li>{{ invited_user_phone_number }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No users have used your invite code yet.</p>
+{% endif %}
+
+<a href="{% url 'register' %}" class="btn btn-primary">Exit</a>

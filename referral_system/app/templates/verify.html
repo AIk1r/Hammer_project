@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Code Verification</title>
+</head>
+<body>
+<h1>Code Verification</h1>
+<form method="POST" action="{% url 'verify' %}">
+    {% csrf_token %}
+    <label for="phone_number">Phone Number:</label>
+    <input type="text" name="phone_number" id="phone_number" required>
+    <br>
+    <label for="code">Verification Code:</label>
+    <input type="text" name="code" id="code" required>
+    <br>
+    <p>Verification Code: {{ code }}</p>
+    <input type="submit" value="Verify">
+</form>
+</body>
+</html>

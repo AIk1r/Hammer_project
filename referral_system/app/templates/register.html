@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Authorization</title>
+</head>
+<body>
+    <h1>Phone number for authorization</h1>
+    <form method="POST" action="{% url 'register' %}">
+        {% csrf_token %}
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" name="phone_number" id="phone_number" required>
+        <br>
+        <input type="submit" value="Authorization">
+    </form>
+</body>
+</html>
